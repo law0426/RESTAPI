@@ -39,7 +39,10 @@ app.UseHttpsRedirection();
 
 app.MapGet("/helloworld", () => "Hello, world!");
 
-// app.MapGet("/tasks", (ITaskContext context) => context.GetAllTasks()); 
+//Example of expanded expression for possible multiple result messages:
+// app.MapGet("/tasks", (ITaskContext context) =>{
+//  Results.Ok(context.GetAllTasks()); 
+// }) 
 
 // app.MapGet("/tasks/complete", (ITaskContext context) => context.GetCompleteTasks());
 

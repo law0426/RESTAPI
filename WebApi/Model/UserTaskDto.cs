@@ -4,7 +4,7 @@ using ASPNETAlong.Interfaces;
 namespace ASPNETAlong.Models;
 
 
-//This helps us search the body for the parameters.
+//This helps us search the body for the parameters. Which are used to for the backend usertask object.
 public class UserTaskDto
 {
     [JsonPropertyName("title")]

@@ -10,13 +10,37 @@ namespace ASPNETAlong.Controllers;
 //Basically enforcing consistency in the naming conventions.
 public class TasksController(ITaskContext context, ILogger<TasksController> logger) : ControllerBase
 {
+    
+
+
     //Gets request types and links them to appropriate endpoint methods.
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public IActionResult Get()
+    /*//the Attribute BELLOW tells the METHOD where to find the object. If it WASN'T used..? 
+    //Then there would be no method called to create the object, and the method bellow wouldn't have the argument necessary to execute properly.
+    //Called from the client upon url input? I'm assuming? FML too much guesswork.
+    //But at least I know the query is essentially the part of the URL that comes after the '?' usually with a lot of
+    //Elements like ?Title=string. with multiple parameters separated by &.*/
+    //Ok, how do I make this whole thing async?
+
+    public async Task<IActionResult> Get([FromQuery] QueryDto? dto) // add CancellationToken cancellationToken?
     {
         logger.LogInformation("Received Get request on standard route!");
-        return Ok(context.GetAllTasks());
+        return Ok( dto.BuildQuery(context)); //TODO: Add cancellation token?
+    }
+
+
+    [HttpGet("complete")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public IActionResult GetComplete()
+    {
+        return Ok(context.GetCompleteTasks());
+    }
+    /* //Old functioning version bellow:
+    public IActionResult Get([FromQuery] QueryDto? dto) 
+    {
+        logger.LogInformation("Received Get request on standard route!");
+        return Ok(dto.BuildQuery(context));
     }
     [HttpGet("complete")]
     [ProducesResponseType(StatusCodes.Status200OK)]
@@ -24,6 +48,9 @@ public class TasksController(ITaskContext context, ILogger<TasksController> logg
     {
         return Ok(context.GetCompleteTasks());
     }
+*/
+
+
     [HttpGet("pending")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public IActionResult GetPending()
@@ -58,6 +85,7 @@ public class TasksController(ITaskContext context, ILogger<TasksController> logg
         if(deletedTask) return NoContent();
         else return NotFound();
     }
+    //TODO: Update with better status? Created?
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]

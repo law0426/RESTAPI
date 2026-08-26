@@ -34,3 +34,4 @@ C:\Users\Deltaker\Documents\kodehode\ProjectFolders\backend2\RESTAPI\WebApi\obj\
 C:\Users\Deltaker\Documents\kodehode\ProjectFolders\backend2\RESTAPI\WebApi\obj\Debug\net10.0\WebApi.pdb
 C:\Users\Deltaker\Documents\kodehode\ProjectFolders\backend2\RESTAPI\WebApi\obj\Debug\net10.0\WebApi.genruntimeconfig.cache
 C:\Users\Deltaker\Documents\kodehode\ProjectFolders\backend2\RESTAPI\WebApi\obj\Debug\net10.0\ref\WebApi.dll
+C:\Users\Deltaker\Documents\kodehode\ProjectFolders\backend2\RESTAPI\WebApi\obj\Debug\net10.0\WebApi.sourcelink.json
