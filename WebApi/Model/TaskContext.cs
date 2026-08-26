@@ -24,7 +24,22 @@ public class TaskContext : ITaskContext
         return true;
     }
 
+    public async Task<bool> AsyncCompleteTask(int id)
+    {
+        var task = _tasks.FirstOrDefault(task => task.Id == id);
+        if (task is null) return false;
+        task.MarkAsCompleted();
+        return true;
+    }
+    
+
     public bool DeleteTask(int id)
+    {
+        var task = _tasks.FirstOrDefault(task => task.Id == id);
+        if (task is null) return false;
+        return _tasks.Remove(task);
+    }
+    public async Task<bool> AsyncDeleteTask(int id)
     {
         var task = _tasks.FirstOrDefault(task => task.Id == id);
         if (task is null) return false;
@@ -35,8 +50,16 @@ public class TaskContext : ITaskContext
     {
         return _tasks;
     }
+    // public async Task <List<IUserTask>> AsyncGetAllTasks()
+    // {
+    //     return _tasks;
+    // }
 
     public List<IUserTask> GetCompleteTasks()
+    {
+        return [.._tasks.Where(task => task.IsCompleted)];
+    }
+    public async  Task<List<IUserTask>> AsyncGetCompleteTasks()
     {
         return [.._tasks.Where(task => task.IsCompleted)];
     }
@@ -45,8 +68,16 @@ public class TaskContext : ITaskContext
     {
         return [.._tasks.Where(task => !task.IsCompleted)];
     }
+    public async Task< List<IUserTask>> AsyncGetPendingTasks()
+    {
+        return [.._tasks.Where(task => !task.IsCompleted)];
+    }
 
     public IUserTask? GetTaskById(int id)
+    {
+        return _tasks.FirstOrDefault(task => task.Id == id);
+    }
+    public async Task<IUserTask?> AsyncGetTaskById(int id)
     {
         return _tasks.FirstOrDefault(task => task.Id == id);
     }

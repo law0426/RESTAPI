@@ -19,4 +19,8 @@ public class UserTaskDto
     {
         return context.AddTask(Title, Description, DueDate);
     }
+    public async Task<IUserTask> AsyncInsertTask(ITaskContext context)
+    {
+        return context.AddTask(Title, Description, DueDate);
+    }
 }

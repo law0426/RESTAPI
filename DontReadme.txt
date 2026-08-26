@@ -67,3 +67,10 @@ For reference.
 
 
 
+Notes:
+I changed the Get to async with await call on the dto.
+nothing broke. But why? Don't I need to make the task context async first? No, because the building done by the query
+doesn't need to be tasks.
+
+
+

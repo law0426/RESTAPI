@@ -14,7 +14,7 @@ public class TasksController(ITaskContext context, ILogger<TasksController> logg
 
 
     //Gets request types and links them to appropriate endpoint methods.
-    [HttpGet]
+    [HttpGet] //This part decides the name in swagger.
     [ProducesResponseType(StatusCodes.Status200OK)]
     /*//the Attribute BELLOW tells the METHOD where to find the object. If it WASN'T used..? 
     //Then there would be no method called to create the object, and the method bellow wouldn't have the argument necessary to execute properly.
@@ -23,18 +23,18 @@ public class TasksController(ITaskContext context, ILogger<TasksController> logg
     //Elements like ?Title=string. with multiple parameters separated by &.*/
     //Ok, how do I make this whole thing async?
 
-    public async Task<IActionResult> Get([FromQuery] QueryDto? dto) // add CancellationToken cancellationToken?
+    public async Task<IActionResult> GetAllAsync([FromQuery] QueryDto? dto) // add CancellationToken cancellationToken?
     {
         logger.LogInformation("Received Get request on standard route!");
-        return Ok( dto.BuildQuery(context)); //TODO: Add cancellation token?
+        return Ok(await dto.BuildQuery(context)); //TODO: Add cancellation token? Allow nullability?
     }
 
 
     [HttpGet("complete")]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public IActionResult GetComplete()
+    public async Task<IActionResult> GetComplete()
     {
-        return Ok(context.GetCompleteTasks());
+        return Ok(await context.AsyncGetCompleteTasks());
     }
     /* //Old functioning version bellow:
     public IActionResult Get([FromQuery] QueryDto? dto) 
@@ -53,25 +53,25 @@ public class TasksController(ITaskContext context, ILogger<TasksController> logg
 
     [HttpGet("pending")]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public IActionResult GetPending()
+    public async Task <IActionResult> GetPending()
     {
-        return Ok(context.GetPendingTasks());
+        return Ok( await context.AsyncGetPendingTasks());
     }
     [HttpGet("{id:int}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)] //Despite the syntax, this is for errorhandling?
-    public IActionResult Get(int id)
+    public async Task< IActionResult> Get(int id)
     {
-        var task = context.GetTaskById(id);
+        var task = await context.AsyncGetTaskById(id);
         if(task is null) return NotFound();
         return Ok(task);
     }
     [HttpPatch("complete/{id:int}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public IActionResult Patch(int id)
+    public async Task<IActionResult> Patch(int id)
     {
-        var completedTask = context.CompleteTask(id);
+        var completedTask = await context.AsyncCompleteTask(id);
         if(completedTask) return NoContent();//Action successful, but nothing to return.
         else return NotFound();
     }
@@ -79,9 +79,9 @@ public class TasksController(ITaskContext context, ILogger<TasksController> logg
     [HttpDelete("{id:int}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public IActionResult Delete(int id)
+    public async Task<IActionResult> Delete(int id)
     {
-        var deletedTask = context.DeleteTask(id);
+        var deletedTask = await context.AsyncDeleteTask(id);
         if(deletedTask) return NoContent();
         else return NotFound();
     }
@@ -89,8 +89,8 @@ public class TasksController(ITaskContext context, ILogger<TasksController> logg
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public IActionResult Post([FromBody] UserTaskDto dto) //Somehow gets data from body. How? I dunno. FURTHER READING.
+    public async Task<IActionResult> Post([FromBody] UserTaskDto dto) //Somehow gets data from body. How? I dunno. FURTHER READING.
     {
-        return Ok(dto.InsertTask(context));
+        return Ok(await dto.AsyncInsertTask(context));
     }
 }

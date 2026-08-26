@@ -10,7 +10,7 @@ public class QueryDto
     public DateTime? EndDate{set;get;}
 
     //TODO: Make async.
-    public IQueryable<IUserTask> BuildQuery(ITaskContext context)
+    public async Task<IQueryable<IUserTask>> BuildQuery(ITaskContext context)
     {
         var query = context.GetAllTasks().AsQueryable();
         if(!string.IsNullOrWhiteSpace(Title)) query = query.Where(task => task.Title.Contains(Title, StringComparison.InvariantCultureIgnoreCase));
