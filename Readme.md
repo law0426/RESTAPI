@@ -1,11 +1,17 @@
 # To-do REST API
 
-A small ASP.NET Core REST API for managing a list of todo items.
+This is a Project made to manage Todo items. Built on Aspnetcore.
 
-This is a demonstration API with in-memory data storage. Data is shared while the application is running and is lost when the application stops or restarts. Until the SQL database compatability is implemented.
+We're building the data on a singleton, loading it to memory, meaning data isn't persistent between runs.
+Shutting down or restarting will clear the data.
 
 ## Running the API
 
+Change to project directory:
+
+```bash
+cd WebApi
+```
 From the project directory, run:
 
 ```bash
@@ -15,6 +21,8 @@ dotnet run
 ## API
 
 ### Todo item
+
+TODO: the below example is not true. Fix.
 
 ```json
 {
@@ -28,6 +36,8 @@ dotnet run
 ```
 
 ### Request body
+
+TODO: UPDATE:
 
 The `POST` and `PUT` endpoints accept the following JSON body:
 
@@ -45,17 +55,21 @@ The `POST` and `PUT` endpoints accept the following JSON body:
 
 ## Endpoints
 
-| Method   | Route                     | Description           | Success response |
-| -------- | ---------------- | --------------------- | ---------------- |
-| `POST`   | `/api/todo`      | Create a todo item    | `201 Created`    |
-| `GET`    | `/api/todo`      | Return all todo items | `200 OK`         |
-| `GET`    | `/api/todo/{id}` | Return one todo item  | `200 OK`         |
-| `PATCH`  | `/api/todo/complete{id}` | Replace a todo item   | `204 No Content`         |
-| `DELETE` | `/api/todo/{id}` | Delete a todo item    | `204 No Content` |
+TODO: UPDATE
+
+| Method   | Route                    | Description           | Success response |
+| -------- | ------------------------ | ----------------------| ---------------- |
+| `POST`   | `/api/todo`              | Create a todo item    | `201 Created`    |
+| `GET`    | `/api/todo`              | Return all todo items | `200 OK`         |
+| `GET`    | `/api/todo/{id}`         | Return one todo item  | `200 OK`         |
+| `PATCH`  | `/api/todo/complete{id}` | todo completion = true| `204 No Content` |
+| `DELETE` | `/api/todo/{id}`         | Delete a todo item    | `204 No Content` |
 
 The API returns:
 
 - `400 Bad Request` when the title is missing or blank.
 - `404 Not Found` when the requested ID does not exist.
 - `201 Created` after successfully creating an item.
-- `204 No Content` after successfully deleting an item.
+- `204 No Content` after successfully deleting or patching an item.
+
+

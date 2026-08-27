@@ -38,7 +38,10 @@ No, if you don't await you return the task itself instead of its results.
 
 TODO:
 
-RENAME Classes and namespaces! =========================== IMPORTANT. QUICK.
+RENAME Classes and namespaces! =========================== DONE.
+
+DONE ========= MAKE GIT PUBLIC ========== DONE
+========= HAND IN.=========
 
 UPDATE README.
 
@@ -54,6 +57,8 @@ Go over the other repos/notes, and try to actually internalize it.
 LINK TO DATABASE.
 
 Also, finish dronedash with client stuff.
+
+Add functionalities: replace function. A PUT command?
 
 FURTHER READING:
 Cancellation tokens.

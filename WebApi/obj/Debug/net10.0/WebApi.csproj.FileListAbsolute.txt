@@ -22,7 +22,6 @@ C:\Users\Deltaker\Documents\kodehode\ProjectFolders\backend2\RESTAPI\WebApi\obj\
 C:\Users\Deltaker\Documents\kodehode\ProjectFolders\backend2\RESTAPI\WebApi\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
 C:\Users\Deltaker\Documents\kodehode\ProjectFolders\backend2\RESTAPI\WebApi\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
 C:\Users\Deltaker\Documents\kodehode\ProjectFolders\backend2\RESTAPI\WebApi\obj\Debug\net10.0\scopedcss\bundle\WebApi.styles.css
-C:\Users\Deltaker\Documents\kodehode\ProjectFolders\backend2\RESTAPI\WebApi\obj\Debug\net10.0\compressed\0xh7ab5k1y-{0}-rd5sr4muzb-rd5sr4muzb.gz
 C:\Users\Deltaker\Documents\kodehode\ProjectFolders\backend2\RESTAPI\WebApi\obj\Debug\net10.0\staticwebassets.build.json
 C:\Users\Deltaker\Documents\kodehode\ProjectFolders\backend2\RESTAPI\WebApi\obj\Debug\net10.0\staticwebassets.build.json.cache
 C:\Users\Deltaker\Documents\kodehode\ProjectFolders\backend2\RESTAPI\WebApi\obj\Debug\net10.0\staticwebassets.development.json
@@ -35,3 +34,4 @@ C:\Users\Deltaker\Documents\kodehode\ProjectFolders\backend2\RESTAPI\WebApi\obj\
 C:\Users\Deltaker\Documents\kodehode\ProjectFolders\backend2\RESTAPI\WebApi\obj\Debug\net10.0\WebApi.genruntimeconfig.cache
 C:\Users\Deltaker\Documents\kodehode\ProjectFolders\backend2\RESTAPI\WebApi\obj\Debug\net10.0\ref\WebApi.dll
 C:\Users\Deltaker\Documents\kodehode\ProjectFolders\backend2\RESTAPI\WebApi\obj\Debug\net10.0\WebApi.sourcelink.json
+C:\Users\Deltaker\Documents\kodehode\ProjectFolders\backend2\RESTAPI\WebApi\obj\Debug\net10.0\compressed\0xh7ab5k1y-{0}-3foular8io-3foular8io.gz

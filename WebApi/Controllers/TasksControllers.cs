@@ -2,7 +2,9 @@ using RestApi.Interfaces;
 using RestApi.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace RestApi.Controllers;
+namespace RestApi.Controllers;//have I messed up naming convention? Suggested namespace "webapi"
+//I don't know why this matters - it's annoying if I can't keep namespace consistent, but as I don't
+//understand the significance yet, I'll try my own namespace, and see what happens.
 
 [ApiController]
 [Route("/[Controller]/")] //This essentially takes the name bellow and 
@@ -23,16 +25,16 @@ public class TasksController(ITaskContext context, ILogger<TasksController> logg
     //Elements like ?Title=string. with multiple parameters separated by &.*/
     //Ok, how do I make this whole thing async?
 
-    public async Task<IActionResult> GetAllAsync([FromQuery] QueryDto? dto) // add CancellationToken cancellationToken?
+    public async Task<IActionResult> AsyncGetAll([FromQuery] QueryDto? dto) // add CancellationToken cancellationToken?
     {
         logger.LogInformation("Received Get request on standard route!");
-        return Ok(await dto.BuildQuery(context)); //TODO: Add cancellation token? Allow nullability?
+        return Ok(await dto.BuildQuery(context)); //TODO: Add cancellation token? Why warn about nullability?
     }
 
 
     [HttpGet("complete")]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetComplete()
+    public async Task<IActionResult> AsyncGetComplete()
     {
         return Ok(await context.AsyncGetCompleteTasks());
     }
@@ -53,14 +55,14 @@ public class TasksController(ITaskContext context, ILogger<TasksController> logg
 
     [HttpGet("pending")]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task <IActionResult> GetPending()
+    public async Task <IActionResult> AsyncGetPending()
     {
         return Ok( await context.AsyncGetPendingTasks());
     }
     [HttpGet("{id:int}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)] //Despite the syntax, this is for errorhandling?
-    public async Task< IActionResult> Get(int id)
+    public async Task< IActionResult> AsyncGet(int id)
     {
         var task = await context.AsyncGetTaskById(id);
         if(task is null) return NotFound();
@@ -69,7 +71,7 @@ public class TasksController(ITaskContext context, ILogger<TasksController> logg
     [HttpPatch("complete/{id:int}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Patch(int id)
+    public async Task<IActionResult> AsyncPatch(int id)
     {
         var completedTask = await context.AsyncCompleteTask(id);
         if(completedTask) return NoContent();//Action successful, but nothing to return.
@@ -79,7 +81,7 @@ public class TasksController(ITaskContext context, ILogger<TasksController> logg
     [HttpDelete("{id:int}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Delete(int id)
+    public async Task<IActionResult> AsyncDelete(int id)
     {
         var deletedTask = await context.AsyncDeleteTask(id);
         if(deletedTask) return NoContent();
@@ -87,10 +89,11 @@ public class TasksController(ITaskContext context, ILogger<TasksController> logg
     }
     //TODO: Update with better status? Created?
     [HttpPost]
-    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> Post([FromBody] UserTaskDto dto) //Somehow gets data from body. How? I dunno. FURTHER READING.
+    public async Task<IActionResult> AsyncPost([FromBody] UserTaskDto dto) //Somehow gets data from body. How? I dunno. FURTHER READING.
     {
-        return Ok(await dto.AsyncInsertTask(context));
+        var item = await dto.AsyncInsertTask(context);
+        return CreatedAtAction(nameof(AsyncGet), new {id = item.Id}, item);
     }
 }
