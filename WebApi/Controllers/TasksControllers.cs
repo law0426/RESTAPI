@@ -29,6 +29,7 @@ public class TasksController(ITaskContext context, ILogger<TasksController> logg
     {
         logger.LogInformation("Received Get request on standard route!");
         return Ok(await dto.BuildQuery(context)); //TODO: Add cancellation token? Why warn about nullability?
+        //Should I do a nullcheck. I don't remember this being an issue in the lecture. 
     }
 
 

@@ -60,6 +60,36 @@ Also, finish dronedash with client stuff.
 
 Add functionalities: replace function. A PUT command?
 
+Improve error handling? Eg. issue details + error object.
+
+Kort README med beskrivelse av endepunkter, parametere og eksempel-requests (tekstlig).
+
+==================================== DONE =======================================
+(Valgfritt) Tjenestelag: Legg domenelogikk i et service-lag, slik at Controller forblir tynn.
+ Dette gjør asynkron kjeding og senere SQL-støtte enklere. ============= I'm pretty sure this was already done?
+ ==================================== DONE =======================================
+
+
+==============================TO  DO =================================
+(Valgfritt) Paging/Filtering: Hvis GET kan returnere mange elementer, støtt spørringsparametre
+ for paginering og filtrering.
+ --- I can do this by having nullable fields for page number and items per page.
+ ---Should I throw errors? or return adjusted elements?
+I think I can do this fairly easily, but it's not as important as trying to implement the database support.
+
+
+
+
+(Valgfritt) XUnit Test Prosjekt: Utvid testingen med et testprosjekt som kan kjøre tester mot
+ apiet, og se om apiet oppfyller forventet oppførsel.
+
+
+Sort files:
+context seem like it should be categorized as service
+But what about the DTOs? is that its own category?
+I don't know what their identifiers really are, since they look similar in structure and function to me.
+
+
 FURTHER READING:
 Cancellation tokens.
 
