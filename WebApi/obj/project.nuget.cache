@@ -1,11 +1,23 @@
 {
   "version": 2,
-  "dgSpecHash": "aRBiGvYEUM8=",
+  "dgSpecHash": "Q7L1QcFuN0g=",
   "success": true,
   "projectFilePath": "C:\\Users\\Deltaker\\Documents\\kodehode\\ProjectFolders\\backend2\\RESTAPI\\WebApi\\WebApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Deltaker\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.7\\microsoft.aspnetcore.openapi.10.0.7.nupkg.sha512",
+    "C:\\Users\\Deltaker\\.nuget\\packages\\microsoft.data.sqlite.core\\10.0.11\\microsoft.data.sqlite.core.10.0.11.nupkg.sha512",
+    "C:\\Users\\Deltaker\\.nuget\\packages\\microsoft.entityframeworkcore\\10.0.11\\microsoft.entityframeworkcore.10.0.11.nupkg.sha512",
+    "C:\\Users\\Deltaker\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\10.0.11\\microsoft.entityframeworkcore.abstractions.10.0.11.nupkg.sha512",
+    "C:\\Users\\Deltaker\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\10.0.11\\microsoft.entityframeworkcore.analyzers.10.0.11.nupkg.sha512",
+    "C:\\Users\\Deltaker\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\10.0.11\\microsoft.entityframeworkcore.relational.10.0.11.nupkg.sha512",
+    "C:\\Users\\Deltaker\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite\\10.0.11\\microsoft.entityframeworkcore.sqlite.10.0.11.nupkg.sha512",
+    "C:\\Users\\Deltaker\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite.core\\10.0.11\\microsoft.entityframeworkcore.sqlite.core.10.0.11.nupkg.sha512",
+    "C:\\Users\\Deltaker\\.nuget\\packages\\microsoft.extensions.dependencymodel\\10.0.11\\microsoft.extensions.dependencymodel.10.0.11.nupkg.sha512",
     "C:\\Users\\Deltaker\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512",
+    "C:\\Users\\Deltaker\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.12\\sqlitepclraw.bundle_e_sqlite3.2.1.12.nupkg.sha512",
+    "C:\\Users\\Deltaker\\.nuget\\packages\\sqlitepclraw.core\\2.1.12\\sqlitepclraw.core.2.1.12.nupkg.sha512",
+    "C:\\Users\\Deltaker\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.12\\sqlitepclraw.lib.e_sqlite3.2.1.12.nupkg.sha512",
+    "C:\\Users\\Deltaker\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.1.12\\sqlitepclraw.provider.e_sqlite3.2.1.12.nupkg.sha512",
     "C:\\Users\\Deltaker\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\10.2.3\\swashbuckle.aspnetcore.swaggerui.10.2.3.nupkg.sha512"
   ],
   "logs": [

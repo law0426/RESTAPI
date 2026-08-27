@@ -89,6 +89,9 @@ context seem like it should be categorized as service
 But what about the DTOs? is that its own category?
 I don't know what their identifiers really are, since they look similar in structure and function to me.
 
+Convert to GUID. PRIORITY LOW
+Better handling of ID. unfamiliar usage. 
+
 
 FURTHER READING:
 Cancellation tokens.
@@ -104,7 +107,6 @@ LastEdit: DateTime
 
 
 
-Async Building: PRIORITY: HIGH.
 
 
 
