@@ -1,4 +1,4 @@
-namespace ASPNETAlong.Interfaces;
+namespace RestApi.Interfaces;
 
 public interface IUserTask
 {

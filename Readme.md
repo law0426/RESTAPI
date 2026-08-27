@@ -45,12 +45,12 @@ The `POST` and `PUT` endpoints accept the following JSON body:
 
 ## Endpoints
 
-| Method   | Route            | Description           | Success response |
+| Method   | Route                     | Description           | Success response |
 | -------- | ---------------- | --------------------- | ---------------- |
 | `POST`   | `/api/todo`      | Create a todo item    | `201 Created`    |
 | `GET`    | `/api/todo`      | Return all todo items | `200 OK`         |
 | `GET`    | `/api/todo/{id}` | Return one todo item  | `200 OK`         |
-| `PUT`    | `/api/todo/{id}` | Replace a todo item   | `200 OK`         |
+| `PATCH`  | `/api/todo/complete{id}` | Replace a todo item   | `204 No Content`         |
 | `DELETE` | `/api/todo/{id}` | Delete a todo item    | `204 No Content` |
 
 The API returns:

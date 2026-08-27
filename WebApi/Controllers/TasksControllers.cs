@@ -1,8 +1,8 @@
-using ASPNETAlong.Interfaces;
-using ASPNETAlong.Models;
+using RestApi.Interfaces;
+using RestApi.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ASPNETAlong.Controllers;
+namespace RestApi.Controllers;
 
 [ApiController]
 [Route("/[Controller]/")] //This essentially takes the name bellow and 

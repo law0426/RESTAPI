@@ -1,7 +1,7 @@
-using ASPNETAlong.Interfaces;
+using RestApi.Interfaces;
 // using ASPNETAlong.Models.UserTask;
 
-namespace ASPNETAlong.Models;
+namespace RestApi.Models;
 
 public class TaskContext : ITaskContext
 {

@@ -1,6 +1,6 @@
-using ASPNETAlong.Interfaces;
+using RestApi.Interfaces;
 
-namespace ASPNETAlong.Models;
+namespace RestApi.Models;
 
 public class QueryDto
 {

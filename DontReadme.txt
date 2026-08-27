@@ -22,23 +22,41 @@ Which I won't do.
 I don't have time.
 but it's good to know.
 
+It's still confusing to me how to structure tasks, since I can technically nest them almost indefinitely.
+It feels like it would be enough to just have the controller methods themselves be tasks. And yet, every example
+seems to have at least one await statement in them.
+Ay caramba.
+
+So, I await task completion because we're gonna do something with it.
+I'm pretty sure this rule doesn't change. but some of the usage examples still trip me up.
+it's also the order of operations. Does a return automatically wait for a task to complete?
+No, if you don't await you return the task itself instead of its results.
+
+
 
 
 
 TODO:
 
-RENAME Classes and namespaces!
+RENAME Classes and namespaces! =========================== IMPORTANT. QUICK.
 
-Convert controllers to async.
+UPDATE README.
+
+DONE========Convert controllers to async.========DONE
 
 I need to be able to test it.
 so I need client dummy?
 Or can I get this information out of my browser?
 Actually. If I've made it async, and it doesn't crash, I'm happy.
 
+Go over the other repos/notes, and try to actually internalize it.
 
+LINK TO DATABASE.
 
-Done:
+Also, finish dronedash with client stuff.
+
+FURTHER READING:
+Cancellation tokens.
 
 
 
@@ -53,14 +71,7 @@ LastEdit: DateTime
 
 Async Building: PRIORITY: HIGH.
 
-1) The controller methods need to be made async.
-2) Some await calls probably need to be made.
-3) And the usertask methods need to be made async as well and called as tasks?
-4) Rename interface and usertasks to have async?
-or just add async options ontop of it?
-Nah.
-I like having them as examples for posterity, but I should just have one commented out.
-For reference.
+
 
 5) Figure out how cancellation tokens work. PRIORITY: Low
 
@@ -74,3 +85,15 @@ doesn't need to be tasks.
 
 
 
+
+
+DONE:
+
+1) The controller methods need to be made async.
+2) Some await calls probably need to be made.
+3) And the usertask methods need to be made async as well and called as tasks?
+4) Rename interface and usertasks to have async?
+or just add async options ontop of it?
+Nah.
+I like having them as examples for posterity, but I should just have one commented out.
+For reference.

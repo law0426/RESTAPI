@@ -1,5 +1,5 @@
-using ASPNETAlong.Interfaces; //TODO: RESTRUCTURE AND RENAME.
-using ASPNETAlong.Models;
+using RestApi.Interfaces; //TODO: RESTRUCTURE AND RENAME.
+using RestApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 

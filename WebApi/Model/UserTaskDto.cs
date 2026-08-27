@@ -1,7 +1,7 @@
 using System.Text.Json.Serialization;
-using ASPNETAlong.Interfaces;
+using RestApi.Interfaces;
 
-namespace ASPNETAlong.Models;
+namespace RestApi.Models;
 
 
 //This helps us search the body for the parameters. Which are used to for the backend usertask object.
