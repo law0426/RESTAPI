@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using RestApi.Interfaces; //TODO: RESTRUCTURE AND RENAME.
 using RestApi.Models;
 
@@ -10,7 +12,9 @@ builder.Services.AddOpenApi();
 // builder.Services.AddTodoItemDbContext(builder.Configuration);
 builder.Services.AddControllers();
 builder.Services.AddLogging();
-builder.Services.AddSingleton<ITaskContext, TaskContext>();
+builder.Services.AddDbContext<ITaskContext, TaskContext>(OptionsBuilder =>{
+    OptionsBuilder.UseSqlite("Data Source=Tasks.db");
+});
 
 
 

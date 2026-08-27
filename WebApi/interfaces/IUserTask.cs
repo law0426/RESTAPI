@@ -7,5 +7,5 @@ public interface IUserTask
     string Description {get;set;}
     bool IsCompleted {get;set;}
     DateTime DueDate {get;set;}
-    void MarkAsCompleted();
+    // void MarkAsCompleted();
 }
