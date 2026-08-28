@@ -12,7 +12,8 @@ public class QueryDto
     //TODO: Make async.
     public async Task<IQueryable<IUserTask>> BuildQuery(ITaskContext context)
     {
-        var query = context.GetAllTasks().AsQueryable();
+        var list = await context.AsyncGetAllTasks();
+        var query = list.AsQueryable();
         if(!string.IsNullOrWhiteSpace(Title)) query = query.Where(task => task.Title.Contains(Title, StringComparison.InvariantCultureIgnoreCase));
         if(!string.IsNullOrWhiteSpace(Description)) query = query.Where( task => task.Description.Contains(Description, StringComparison.InvariantCultureIgnoreCase));
         if(StartDate.HasValue) query = query.Where( task => task.DueDate > StartDate);

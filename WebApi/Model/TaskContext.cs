@@ -12,7 +12,7 @@ public class TaskContext(DbContextOptions<TaskContext> options) : DbContext(opti
     //private int _nextId;
     public int Count => Tasks.Count();
 
-    public async Task<UserTask> AddTask(string title, string description, DateTime dueDate)
+    public async Task<UserTask> AsyncAddTask(string title, string description, DateTime dueDate)
     {
         var newTask = new UserTask(/*++_nextId,*/ title, description,dueDate);
         await Tasks.AddAsync(newTask);

@@ -25,7 +25,7 @@ public class TasksController(ITaskContext context, ILogger<TasksController> logg
     //Elements like ?Title=string. with multiple parameters separated by &.*/
     //Ok, how do I make this whole thing async?
 
-    public async Task<IActionResult> AsyncGetAll([FromQuery] QueryDto? dto) // add CancellationToken cancellationToken?
+    public async Task<IActionResult> AsyncGetAll([FromQuery] QueryDto dto) // add CancellationToken cancellationToken?
     {
         logger.LogInformation("Received Get request on standard route!");
         return Ok(await dto.BuildQuery(context)); //TODO: Add cancellation token? Why warn about nullability?
@@ -63,7 +63,7 @@ public class TasksController(ITaskContext context, ILogger<TasksController> logg
     [HttpGet("{id:int}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)] //Despite the syntax, this is for errorhandling?
-    public async Task< IActionResult> AsyncGet(int id)
+    public async Task<IActionResult> AsyncGet(int id)
     {
         var task = await context.AsyncGetTaskById(id);
         if(task is null) return NotFound();

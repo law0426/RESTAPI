@@ -19,5 +19,5 @@ public interface ITaskContext
     Task<bool>  AsyncCompleteTask(int id);
     bool DeleteTask(int id);
     Task<bool> AsyncDeleteTask(int id);
-    Task<UserTask> AddTask(string title, string description, DateTime dueDate);
+    Task<UserTask> AsyncAddTask(string title, string description, DateTime dueDate);
 }

@@ -15,12 +15,12 @@ public class UserTaskDto
     public required DateTime DueDate{get;set;}
 
 //Task itaskcontext, creates a task with dto properties, returns iusertask.
-    public IUserTask InsertTask(ITaskContext context)
+    // public IUserTask InsertTask(ITaskContext context)
+    // {
+    //     return context.AddTask(Title, Description, DueDate);
+    // }
+    public async Task<UserTask> AsyncInsertTask(ITaskContext context)
     {
-        return context.AddTask(Title, Description, DueDate);
-    }
-    public async Task<IUserTask> AsyncInsertTask(ITaskContext context)
-    {
-        return context.AddTask(Title, Description, DueDate);
+        return await context.AsyncAddTask(Title, Description, DueDate);
     }
 }
