@@ -12,11 +12,11 @@ public class TaskContext(DbContextOptions<TaskContext> options) : DbContext(opti
     //private int _nextId;
     public int Count => Tasks.Count();
 
-    public IUserTask AddTask(string title, string description, DateTime dueDate)
+    public async Task<UserTask> AddTask(string title, string description, DateTime dueDate)
     {
         var newTask = new UserTask(/*++_nextId,*/ title, description,dueDate);
-        Tasks.Add(newTask);
-        SaveChanges();
+        await Tasks.AddAsync(newTask);
+        await SaveChangesAsync();
         return newTask;
     }
 
@@ -31,10 +31,10 @@ public class TaskContext(DbContextOptions<TaskContext> options) : DbContext(opti
 
     public async Task<bool> AsyncCompleteTask(int id)
     {
-        var task = Tasks.FirstOrDefault(task => task.Id == id);
+        var task = await Tasks.FirstOrDefaultAsync(task => task.Id == id);
         if (task is null) return false;
         task.IsCompleted = true;
-        SaveChanges();
+        await SaveChangesAsync();
         return true;
     }
     
@@ -49,10 +49,10 @@ public class TaskContext(DbContextOptions<TaskContext> options) : DbContext(opti
     }
     public async Task<bool> AsyncDeleteTask(int id)
     {
-        var task = Tasks.FirstOrDefault(task => task.Id == id);
+        var task = await Tasks.FirstOrDefaultAsync(task => task.Id == id);
         if (task is null) return false;
         Tasks.Remove(task);
-        SaveChanges();
+        await SaveChangesAsync();
         return true;
     }
 
@@ -60,35 +60,35 @@ public class TaskContext(DbContextOptions<TaskContext> options) : DbContext(opti
     {
         return [..Tasks.AsNoTracking()];//FURTHER READING: ".." needs elaborating.
     }
-    // public async Task <List<IUserTask>> AsyncGetAllTasks()
-    // {
-    //     return Tasks;
-    // }
+    public async Task <List<UserTask>> AsyncGetAllTasks()
+    {
+        return await Tasks.ToListAsync();
+    }
 
     public List<IUserTask> GetCompleteTasks()
     {
         return [..Tasks.Where(task => task.IsCompleted).AsNoTracking()];
     }
-    public async  Task<List<IUserTask>> AsyncGetCompleteTasks()
+    public async  Task<List<UserTask>> AsyncGetCompleteTasks()
     {
-        return [..Tasks.Where(task => task.IsCompleted).AsNoTracking()];
+        return await Tasks.Where(task => task.IsCompleted).ToListAsync();
     }
 
     public List<IUserTask> GetPendingTasks()
     {
         return [..Tasks.Where(task => !task.IsCompleted).AsNoTracking()];
     }
-    public async Task< List<IUserTask>> AsyncGetPendingTasks()
+    public async Task< List<UserTask>> AsyncGetPendingTasks()
     {
-        return [..Tasks.Where(task => !task.IsCompleted).AsNoTracking()];
+        return await Tasks.Where(task => !task.IsCompleted).ToListAsync();
     }
 
     public IUserTask? GetTaskById(int id)
     {
         return Tasks.AsNoTracking().FirstOrDefault(task => task.Id == id);
     }
-    public async Task<IUserTask?> AsyncGetTaskById(int id)
+    public async Task<UserTask?> AsyncGetTaskById(int id)
     {
-        return Tasks.AsNoTracking().FirstOrDefault(task => task.Id == id);
+        return await Tasks.AsNoTracking().FirstOrDefaultAsync(task => task.Id == id);
     }
 }

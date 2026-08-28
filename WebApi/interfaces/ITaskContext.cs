@@ -1,21 +1,23 @@
 namespace RestApi.Interfaces;
+using RestApi.Models;
 
 public interface ITaskContext
 {
     int Count {get;}
     List<IUserTask> GetAllTasks();
+    Task<List<UserTask>> AsyncGetAllTasks();
     IUserTask? GetTaskById(int id);
-    Task<IUserTask?> AsyncGetTaskById(int id);
+    Task<UserTask?> AsyncGetTaskById(int id);
     List<IUserTask> GetPendingTasks();
-    Task<List<IUserTask>> AsyncGetPendingTasks();
+    Task<List<UserTask>> AsyncGetPendingTasks();
 
     List<IUserTask> GetCompleteTasks();
-    Task< List<IUserTask>> AsyncGetCompleteTasks();
+    Task< List<UserTask>> AsyncGetCompleteTasks();
 
 
     bool CompleteTask(int id);
     Task<bool>  AsyncCompleteTask(int id);
     bool DeleteTask(int id);
     Task<bool> AsyncDeleteTask(int id);
-    IUserTask AddTask(string title, string description, DateTime dueDate);
+    Task<UserTask> AddTask(string title, string description, DateTime dueDate);
 }
