@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 public class TaskContext(DbContextOptions<TaskContext> options) : DbContext(options), ITaskContext
 {
-    public DbSet<UserTask> Tasks{get;set;}
+    public required DbSet<UserTask> Tasks{get;set;}
     //private List<IUserTask> Tasks = [];
     //private int _nextId;
     public int Count => Tasks.Count();
